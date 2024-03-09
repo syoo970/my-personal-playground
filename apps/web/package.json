@@ -13,9 +13,13 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.10",
     "@repo/ui": "workspace:*",
+    "add": "^2.0.6",
+    "axios": "^1.6.7",
     "next": "^14.0.4",
+    "pnpm": "^8.15.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "workspace": "0.0.1-preview.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.4",
