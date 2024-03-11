@@ -2,7 +2,7 @@ import withPlaiceholder from "@plaiceholder/next";
 
 /** @type {import('next').NextConfig} */
 const config = {
-  transpilePackages: ["@repo/ui"],
+  transpilePackages: ["@repo/ui", "@plaiceholder/next"],
   images: {
     remotePatterns: [
       {
