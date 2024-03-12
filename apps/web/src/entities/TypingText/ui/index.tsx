@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { HtmlHTMLAttributes } from "react";
 import { motion, useMotionValue, animate, useTransform } from "framer-motion";
 import Cursor from "./Cursor";
 
@@ -15,15 +15,27 @@ type TypingTextProps =
       textList: string[];
     };
 
-const TypingText = ({ text, multiline, textList }: TypingTextProps) => {
+type MotionType = {
+  innerClassName?: string;
+  cursor?: boolean;
+};
+
+const TypingText = ({
+  text,
+  multiline,
+  textList,
+  innerClassName,
+  cursor = true,
+  ...props
+}: TypingTextProps & HtmlHTMLAttributes<HTMLSpanElement> & MotionType) => {
   return (
-    <span>
+    <span {...props}>
       {multiline ? (
-        <Multiple textList={textList} />
+        <Multiple textList={textList} innerClassName={innerClassName} />
       ) : (
-        <Single text={text} purpose="single" />
+        <Single text={text} purpose="single" innerClassName={innerClassName} />
       )}
-      <Cursor />
+      {cursor ? <Cursor /> : null}
     </span>
   );
 };
@@ -36,7 +48,12 @@ type SingleProps = {
   onComplete?: () => void;
 };
 
-const Single = ({ text, purpose, onComplete }: SingleProps) => {
+const Single = ({
+  text,
+  purpose,
+  onComplete,
+  innerClassName,
+}: SingleProps & MotionType) => {
   const cnt = useMotionValue(0);
   const newValue = useTransform(cnt, (v) => Math.round(v));
   const displayText = useTransform(newValue, (v) => text.slice(0, v));
@@ -57,16 +74,14 @@ const Single = ({ text, purpose, onComplete }: SingleProps) => {
     };
   }, []);
 
-  return <motion.span>{displayText}</motion.span>;
+  return <motion.span className={innerClassName}>{displayText}</motion.span>;
 };
 
-const Multiple = ({ textList }: { textList: string[] }) => {
+const Multiple = ({
+  textList,
+  innerClassName,
+}: { textList: string[] } & MotionType) => {
   const [textIndex, setTextIndex] = React.useState(0);
-
-  React.useEffect(() => {
-    console.log(textIndex);
-    console.log(textList[textIndex]);
-  }, [textIndex]);
 
   return (
     <>
@@ -76,6 +91,7 @@ const Multiple = ({ textList }: { textList: string[] }) => {
             <Single
               key={index}
               text={text}
+              innerClassName={innerClassName}
               purpose="multiple"
               onComplete={() => {
                 setTextIndex((prev) => (prev + 1) % textList.length);

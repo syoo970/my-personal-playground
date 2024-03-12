@@ -12,14 +12,11 @@ export default function Page(): JSX.Element {
       />
       <div className="flex flex-col">
         <TypingText text="Hello, World!" />
-
         <TypingText
           multiline
-          textList={[
-            "Hello, World!",
-            "This is a test.",
-            "This is a test of the emergency broadcast system.",
-          ]}
+          textList={["Hello, World!", "프론트엔드 개발자"]}
+          innerClassName="text-2xl"
+          className="flex items-center"
         />
       </div>
     </main>
