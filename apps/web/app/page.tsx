@@ -10,7 +10,18 @@ export default function Page(): JSX.Element {
         height={300}
         alt="unsplash"
       />
-      <TypingText text="Hello, World!" />
+      <div className="flex flex-col">
+        <TypingText text="Hello, World!" />
+
+        <TypingText
+          multiline
+          textList={[
+            "Hello, World!",
+            "This is a test.",
+            "This is a test of the emergency broadcast system.",
+          ]}
+        />
+      </div>
     </main>
   );
 }
