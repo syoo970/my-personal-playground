@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import StyleProvider from "../src/shared/styleProvider";
+import Header from "../src/widgets/Header/ui";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StyleProvider>{children}</StyleProvider>
+        <StyleProvider>
+          <Header />
+          <div className="sperator mt-[60px]" />
+          {children}
+        </StyleProvider>
       </body>
     </html>
   );
