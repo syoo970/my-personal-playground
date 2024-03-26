@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import StyleProvider from "../src/shared/styleProvider";
 import Header from "../src/widgets/Header/ui";
+import { ColorSchemeScript } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,9 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body className={inter.className}>
         <StyleProvider>
           <Header />

@@ -11,6 +11,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@mantine/core": "^7.6.2",
+    "@mantine/hooks": "^7.6.2",
+    "@mantine/modals": "^7.6.2",
     "@mui/material": "^5.15.10",
     "@plaiceholder/next": "^3.0.0",
     "@repo/ui": "workspace:*",
@@ -36,6 +39,8 @@
     "autoprefixer": "^10.4.18",
     "eslint": "^8.56.0",
     "postcss": "^8.4.35",
+    "postcss-preset-mantine": "^1.13.0",
+    "postcss-simple-vars": "^7.0.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   }
