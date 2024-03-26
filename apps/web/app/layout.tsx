@@ -4,8 +4,15 @@ import { Inter } from "next/font/google";
 import StyleProvider from "../src/shared/styleProvider";
 import Header from "../src/widgets/Header/ui";
 import { ColorSchemeScript } from "@mantine/core";
+import localFont from "next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const mbc = localFont({
+  src: "../public/mbc1961.otf",
+  display: "swap",
+  variable: "--font-mbc",
+});
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -22,7 +29,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${mbc.variable}`}>
         <StyleProvider>
           <Header />
           <div className="sperator mt-[60px]" />
