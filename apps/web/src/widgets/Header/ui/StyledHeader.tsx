@@ -8,7 +8,7 @@ const StyledHeader = ({ children }: React.PropsWithChildren) => {
   const { isMobile, opened, toggle, close } = useMobile();
 
   return (
-    <header className="w-full fixed left-0 right-0 top-0 h-[60px] py-2 px-4">
+    <header className="w-full fixed left-0 right-0 top-0 h-[60px] py-2 px-4 z-[9999]">
       <div className="w-full h-full flex items-center justify-between gap-4">
         {isMobile && <Burger opened={opened} onClick={toggle} ref={ref} />}
         <div className="logo flex gap-2 items-center">
@@ -18,7 +18,21 @@ const StyledHeader = ({ children }: React.PropsWithChildren) => {
         </div>
         {!isMobile ? children : <div className={`w-[34px]`} />}
         {isMobile && (
-          <Drawer opened={opened} onClose={close}>
+          <Drawer
+            opened={opened}
+            onClose={close}
+            size="100%"
+            styles={{
+              inner: {
+                position: "absolute",
+                top: "60px",
+              },
+            }}
+            withCloseButton={false}
+            overlayProps={{
+              backgroundOpacity: 0,
+            }}
+          >
             {children}
           </Drawer>
         )}
