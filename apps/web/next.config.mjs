@@ -11,6 +11,9 @@ const config = {
       },
     ],
   },
+  experimental: {
+    optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
+  },
 };
 
 export default withPlaiceholder(config);
